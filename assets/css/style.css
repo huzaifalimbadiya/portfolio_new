@@ -139,7 +139,7 @@ a { color: var(--accent); text-decoration: none; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-art {
   position: relative;
-  min-height: 280px;
+  min-height: 100px;
 }
 .orb {
   position: absolute;

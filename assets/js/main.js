@@ -137,13 +137,21 @@
     const email = /** @type {HTMLInputElement} */(document.getElementById('email')).value.trim();
     const subjectInput = /** @type {HTMLInputElement} */(document.getElementById('subject'));
     const subject = subjectInput ? subjectInput.value.trim() : '';
+    const phoneInput = /** @type {HTMLInputElement} */(document.getElementById('phone'));
+    const phone = phoneInput ? phoneInput.value.trim() : '';
     const message = /** @type {HTMLTextAreaElement} */(document.getElementById('message')).value.trim();
     if (!name || !email || !message) {
       status.textContent = 'Please fill in all fields.';
       return;
     }
     const finalSubject = subject || ('Portfolio Contact from ' + name);
-    const mailto = `mailto:limbadiyahuzef1@gmail.com?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+    const bodyLines = [
+      `From: ${name} (${email})`,
+      phone ? `Phone: ${phone}` : '',
+      '',
+      message
+    ].filter(Boolean).join('\n');
+    const mailto = `mailto:limbadiyahuzef1@gmail.com?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(bodyLines)}`;
     status.textContent = 'Opening your email app...';
     window.location.href = mailto;
     setTimeout(() => (status.textContent = 'If your email app did not open, please copy and email manually.'), 1200);

@@ -372,6 +372,7 @@ input:focus, textarea:focus { border-color: var(--accent); }
 .footer-links a:hover {
   color: var(--accent);
 }
+.social-list { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
 .footer-grid {
   display: flex;
   align-items: center;
